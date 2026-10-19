@@ -1,0 +1,14 @@
+<h2 class="text-center mb-4">Travlr Getaways</h2>
+<p class="text-center text-muted">{{ message }}</p>
+
+<!-- add Trip button -->
+<div class="mb-3">
+  <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
+</div>
+
+<!-- card grid using the child component -->
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let trip of trips">
+    <app-trip-card [trip]="trip"></app-trip-card>
+  </div>
+</div>
