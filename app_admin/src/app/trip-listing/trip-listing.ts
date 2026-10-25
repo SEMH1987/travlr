@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TripCard } from '../trip-card/trip-card';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-listing',
@@ -21,9 +22,14 @@ export class TripListingComponent implements OnInit {
   constructor(
     private tripDataService: TripDataService, 
     private router: Router,
-    private cdr: ChangeDetectorRef // <--- Added here
+    private cdr: ChangeDetectorRef, 
+    private authenticationService: AuthenticationService
   ) {
     console.log('trip-listing constructor');
+  }
+
+  public isLoggedIn() {
+    return this.authenticationService.isLoggedIn();
   }
 
   public addTrip(): void {
@@ -43,7 +49,7 @@ export class TripListingComponent implements OnInit {
           }
           console.log(this.message);
           
-          this.cdr.detectChanges(); // <--- Forces Angular to draw the cards immediately!
+          this.cdr.detectChanges(); 
         },
         error: (error: any) => {
           console.log('Error: ', error);

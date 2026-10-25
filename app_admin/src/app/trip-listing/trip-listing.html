@@ -2,7 +2,7 @@
 <p class="text-center text-muted">{{ message }}</p>
 
 <!-- add Trip button -->
-<div class="mb-3">
+<div class="mb-3" *ngIf="isLoggedIn()">
   <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
 </div>
 
